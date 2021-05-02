@@ -5,30 +5,35 @@ from Customer.models import Customer
 
 def cus(request):  
     if request.method == "POST":  
-        form = CustomerForm(request.POST)  
+        form = CustomerForm(request.POST,request.FILES)
+        print(form.errors)  
         if form.is_valid():  
             try:  
-                form.save()  
-                return redirect('/show')  
+                form.save()
+                img_obj = form.instance  
+                return redirect('/show',{'img_obj': img_obj})
+
             except:  
                 pass  
     else:  
         form = CustomerForm()  
-    return render(request,'index.html',{'form':form})  
+    return render(request,'cus_index.html',{'form':form})  
 def show(request):  
-    branches = Customer.objects.all()  
-    return render(request,"show.html",{'branches':branches})  
+    customers = Customer.objects.all().order_by('id')  
+    return render(request,"cus_show.html",{'customers':customers})  
 def edit(request, id):  
-    branch = Customer.objects.get(id=id)  
-    return render(request,'edit.html', {'branch':branch})  
+    customer = Customer.objects.get(id=id)  
+    return render(request,'cus_edit.html', {'customer':customer})  
 def update(request, id):  
-    branch = Customer.objects.get(id=id)  
-    form = CustomerForm(request.POST, instance = branch)  
+    customer = Customer.objects.get(id=id)  
+    form = CustomerForm(request.POST,request.FILES, instance = customer)
+    print(form.errors)  
     if form.is_valid():  
-        form.save()  
-        return redirect("/show")  
-    return render(request, 'edit.html', {'branch': branch})  
+        form.save()
+        img_obj = form.instance  
+        return redirect("/show",{'img_obj': img_obj})  
+    return render(request, 'cus_edit.html', {'customer': customer})  
 def destroy(request, id):  
-    branch = Customer.objects.get(id=id)  
-    branch.delete()  
+    customer = Customer.objects.get(id=id)  
+    customer.delete()  
     return redirect("/show")  

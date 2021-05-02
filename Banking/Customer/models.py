@@ -4,10 +4,12 @@ class Customer(models.Model):
     cfname = models.CharField(max_length=50)
     cmname = models.CharField(max_length=50, null=True)
     clname = models.CharField(max_length=50)  
-    mobile_no = models.CharField(max_length=10)
+    mobileno = models.CharField(max_length=10)
     occupation = models.CharField(max_length=30, null=True)
     dateof_birth = models.DateField()
     address = models.CharField(max_length=150)
+    Image = models.ImageField(null=True,blank=True,upload_to='images')
+    Signature = models.ImageField(null=True,blank=True,upload_to='signatures')
     class Meta:  
         db_table = "customer"   
 

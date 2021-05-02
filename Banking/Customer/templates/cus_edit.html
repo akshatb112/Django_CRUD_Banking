@@ -1,0 +1,92 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    {% load static %}  
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"/>  
+</head>  
+<body>
+<br>
+<center>  
+<a href="/" class="btn btn-success">Customer</a>  
+<a href="/branch" class="btn btn-success">Branch</a>
+<a href="/account" class="btn btn-success">Account</a>  
+<br><br>
+</center>
+<form method="POST" class="post-form" action="/update/{{customer.id}}">  
+        {% csrf_token %}  
+    <div class="container" style="border: 1px solid #DDDDDD; border-radius: 10px; width:500px; background: #F9F9F9">  
+      <center>
+      <br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div>  
+    <h3>Update Details</h3>  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label >Customer Id:</label>  
+    <div>  
+        <input type="text" name="cid" id="id_cid" required maxlength="20" value="{{ customer.id }}" readonly/>  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label >First Name:</label>  
+    <div >  
+        <input type="text" name="cfname" id="id_cfname" required maxlength="100" value="{{ customer.cfname }}" />  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label >Middle Name:</label>  
+    <div >  
+        <input type="text" name="cmname" id="id_cmname" required maxlength="100" value="{{ customer.cmname }}" />  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label >Last Name:</label>  
+    <div >  
+        <input type="text" name="clname" id="id_clname" required maxlength="100" value="{{ customer.clname }}" />  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label >Moblie No. :</label>  
+    <div >  
+        <input type="text" name="mobileno" id="id_mobileno" required maxlength="10" value="{{ customer.mobileno }}" />  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label >Occupation:</label>  
+    <div > 
+        <select id="id_occupation" name="occupation" size="1" value="{{ customer.occupation }}">
+          <option value="Student">Student</option>
+          <option value="Employed">Employed</option>
+          <option value="Unemployed">Unemployed</option>
+          <option value="Business">Business</option> 
+        </select>  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label >Date of Birth:</label>  
+    <div >  
+        <input type="date" name="dateof_birth" id="id_dateof_birth" required value="{{ customer.dateof_birth }}" />  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label >Address:</label>  
+    <div >  
+        <textarea name="address" id="id_address"  rows="5" required maxlength="100" >{{ customer.address }}</textarea>  
+    </div>  
+  </div>    
+  <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div >  
+    <button type="submit" class="btn btn-primary">Update</button>  
+    </div>  
+  </div>
+  </center>  
+    </div>  
+</form>  
+</body>  
+</html>

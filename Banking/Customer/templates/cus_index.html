@@ -1,0 +1,80 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    {% load static %}  
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"/>  
+</head>  
+<body>
+<center>
+    <br>  
+    <a href="/" class="btn btn-success">Customer</a>  
+    <a href="/branch" class="btn btn-success">Branch</a>
+    <a href="/account" class="btn btn-success">Account</a>  
+    <br><br>
+</center>
+<div>  
+    <form method="POST" enctype="multipart/form-data" class="post-form" action="/cus">  
+            {% csrf_token %}  
+    <div class="container" style="border: 1px solid #DDDDDD; border-radius: 10px; width:700px; background: #F9F9F9">  
+    <center>
+        <br>  
+    <div class="form-group row">  
+        <h3>Enter Customer Details</h3>    
+    </div>   
+        <div class="form-group row">  
+            <h3><label >First Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Middle Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Last Name</label></h3>  
+            <div >  
+            {{ form.cfname }} {{ form.cmname }} {{ form.clname }}  
+            </div>  
+        </div>
+    <div class="form-group row">  
+        <h3><label >Mobile No. :</label></h3>  
+        <div >  
+        {{ form.mobileno }}  
+        </div>  
+    </div>
+    <div class="form-group row">  
+        <h3><label >Occupation:</label></h3>  
+        <div >  
+        {{ form.occupation }}  
+        </div>  
+    </div>
+    <div class="form-group row">  
+        <h3><label >Date of Birth:</label></h3>  
+        <div >  
+        {{ form.dateof_birth }}  
+        </div>  
+    </div>
+    <div class="form-group row">  
+        <h3><label >Address:</label></h3>  
+        <div >  
+        {{ form.address }}  
+        </div>  
+    </div>
+    <div class="form-group row">  
+        <h3><label >Passport Image:</label></h3>  
+        <div >  
+        {{ form.Image }}  
+        </div>  
+    </div>
+    <div class="form-group row">  
+        <h3><label >Signature Image:</label></h3>  
+        <div >  
+        {{ form.Signature }}  
+        </div>  
+    </div>        
+        <div class="form-group row">  
+        <label class="col-sm-1 col-form-label"></label>  
+        <div style="text-align: center;">  
+        <button type="submit" class="btn btn-primary">Add Customer</button>  
+        </div>  
+    </div>
+    </center>  
+        </div>  
+    </form> 
+</div> 
+</body>  
+</html>
