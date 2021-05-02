@@ -1,0 +1,1 @@
+The images uploaded would be stored here 
