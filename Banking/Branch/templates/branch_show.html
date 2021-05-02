@@ -1,0 +1,45 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Branch Records</title>  
+     {% load static %}  
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"/>
+      
+</head>  
+<body>
+<center>
+<br>    
+<a href="/" class="btn btn-success">Customer</a>  
+<a href="/branch" class="btn btn-success">Branch</a>
+<a href="/account" class="btn btn-success">Account</a>
+<br><br>  
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th style="text-align: center;" >Branch ID</th>  
+        <th style="text-align: center;" >Branch Name</th>  
+        <th style="text-align: center;" >Branch City</th>    
+        <th style="text-align: center;" >Actions</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for branch in branches %}  
+    <tr>  
+        <td>{{ branch.id }}</td>  
+        <td>{{ branch.bname }}</td>  
+        <td>{{ branch.bcity }}</td>   
+        <td>  
+            <a href="/b_edit/{{ branch.id }}" class="btn btn-info">Edit</a>  
+            <a href="/b_delete/{{ branch.id }}" class="btn btn-danger">Delete</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<a href="/branch/branc" class="btn btn-primary">Add New Record</a></center>  
+</body>  
+</html>  

@@ -4,43 +4,53 @@
     <meta charset="UTF-8">  
     <title>Index</title>  
     {% load static %}  
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"/>  
 </head>  
-<body>  
-<form method="POST" class="post-form" action="/update/{{branch.id}}">  
-        {% csrf_token %}  
-    <div class="container">  
+<body>
+<center> 
 <br>  
+<a href="/" class="btn btn-success">Customer</a>  
+<a href="/branch" class="btn btn-success">Branch</a>
+<a href="/account" class="btn btn-success">Account</a>  
+<br><br>
+  
+<form method="POST" class="post-form" action="/b_update/{{branch.id}}">  
+        {% csrf_token %}  
+    <div class="container" style="border: 1px solid #DDDDDD; border-radius: 10px; width:500px; background: #F9F9F9">  
+      
+      <br>  
     <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
-    <div class="col-sm-4">  
+    <label ></label>  
+    <div >  
     <h3>Update Details</h3>  
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Branch Id:</label>  
-    <div class="col-sm-4">  
+    <label>Branch Id:</label>  
+    <div >  
         <input type="text" name="eid" id="id_eid" required maxlength="20" value="{{ branch.id }}" readonly/>  
     </div>  
   </div>  
   <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Branch Name:</label>  
-    <div class="col-sm-4">  
+    <label >Branch Name:</label>  
+    <div >  
         <input type="text" name="bname" id="id_bname" required maxlength="100" value="{{ branch.bname }}" />  
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Branch City:</label>  
-    <div class="col-sm-4">  
+    <label >Branch City:</label>  
+    <div >  
         <input type="text" name="bcity" id="id_bcity" required maxlength="254" value="{{ branch.bcity }}" />  
     </div>  
   </div>   
     <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
-    <div class="col-sm-4">  
-    <button type="submit" class="btn btn-success">Update</button>  
+    <label ></label>  
+    <div >  
+    <button type="submit" class="btn btn-primary">Update</button>  
     </div>  
-  </div>  
+  </div>
+  </center>  
     </div>  
 </form>  
 </body>  
